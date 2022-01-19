@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thyeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Personne</title>
+</head>
+<body>
+    <h1>Ajouter une personne</h1>
+ 
+    <form th:action="@{/client/ajout}" th:object="${client}" method="POST">
+        Code postale: 
+        <input type="text" th:field="*{adresse.codePostale}">
+        <br>
+        Rue: 
+        <input type="text" th:field="*{adresse.rue}">
+        <br>
+        numero rue: 
+        <input type="text" th:field="*{adresse.numero}">
+        <br>
+        Ville: 
+        <input type="text" th:field="*{adresse.ville}">
+        <br>
+        Prenom : 
+        <input type="text" th:field="*{prenom}">
+        <br>
+        Nom : 
+        <input type="text" th:field="*{nom}">
+        <br>
+        Date de Naissance : 
+        <input type="date" th:field="*{dateNaissance}">
+        <br>
+
+        <select th:field="*{banque}">
+            <option th:each="banque : ${banques}" th:value="${banque.id}" th:text="${banque.nom}"></option>
+        </select>
+
+        <!-- Banque id: 
+        <input type="text" th:field="*{banque.id}">
+        <br>
+        Banque nom: 
+        <input type="text" th:field="*{banque.nom}"> -->
+        <br>
+        <input type="submit" value="Create">
+    </form>
+    <a th:href="@{/home}">Retour à l'acceuil'</a>
+</body>
+</html>

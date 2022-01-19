@@ -1,0 +1,22 @@
+<table>
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Date de naissance</th>
+            <th>Banque</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="client : ${clients}">
+            <td th:text="${client.nom}"></td>
+            <td th:text="${client.prenom}"></td>
+            <td th:text="${#dates.format(client.dateNaissance, 'dd-MM-yyyy')}"></td>
+            <td th:text="${client.banque.nom}"></td>
+            <td><a th:href="@{'/client/delete/'+ ${client.id}}">Delete</a></td>            
+        </tr>
+    </tbody>
+</table>
+<a th:href="@{/home}">Retour à l'acceuil !</a>
+<a th:href="@{/client/ajout}">Ajouter un client !</a>
